@@ -1,13 +1,19 @@
 import java.util.LinkedList;
 import java.util.ListIterator;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.IOException;
 
 public class week01_2 {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        String line = sc.nextLine();
-        String num = sc.nextLine();
+    public static void main(String[] args)throws IOException{
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+        String line = input.readLine();
+        String num = input.readLine();
         int linenum = line.length();
+        
         if(linenum <= 100000 && 1 <= Integer.parseInt(num) && Integer.parseInt(num) <= 500000)
         {
             LinkedList<String> list = new LinkedList<String>();
@@ -20,7 +26,7 @@ public class week01_2 {
 
             for(int i = 0; i < Integer.parseInt(num); i++)  
             {
-                String[] cmd = sc.nextLine().split(" ");
+                String[] cmd = input.readLine().split(" ");
                 if(cmd[0].equals("L"))
                 {
                     if(it.hasPrevious())
@@ -47,9 +53,10 @@ public class week01_2 {
                 }
             }
             for(String i : list)        
-                System.out.print(i); 
+                output.write(i); 
             
         }
-        sc.close();     
+        input.close();
+		output.close(); 
     }
 }
