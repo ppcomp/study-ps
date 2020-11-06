@@ -128,4 +128,4 @@ public class Baekjoon6198 {
 
 ### 스택 결과
 
-[image](https://user-images.githubusercontent.com/47655983/98334694-c764be80-2046-11eb-8b03-59d7e323dc03.png)
+![image](https://user-images.githubusercontent.com/47655983/98334694-c764be80-2046-11eb-8b03-59d7e323dc03.png)
