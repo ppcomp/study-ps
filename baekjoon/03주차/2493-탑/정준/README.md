@@ -103,4 +103,4 @@ for문 순회마다 스택에 배열값을 삽입 해주고
 
 ---
 
-[image](https://user-images.githubusercontent.com/47655983/98332032-3dfebd80-2041-11eb-93ef-68c8f236eb5d.png)
+![image](https://user-images.githubusercontent.com/47655983/98332032-3dfebd80-2041-11eb-93ef-68c8f236eb5d.png)

@@ -77,4 +77,4 @@ public class Baekjoon4889 {
 
 ---
 
-[image](https://user-images.githubusercontent.com/47655983/98333220-98008280-2043-11eb-9c15-1d11f4338fb5.png)
+![image](https://user-images.githubusercontent.com/47655983/98333220-98008280-2043-11eb-9c15-1d11f4338fb5.png)
