@@ -1,29 +1,28 @@
 import java.io.*;
 
-public class Baekjoon2448 {
+public class Baekjoon2447 {
     public static char[][] arr;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int n = Integer.parseInt(br.readLine());
-        int row = n;
-        int col = 2*n-1;
-        arr = new char[row][col];
+        
+        arr = new char[n][n];
         //배열 공백으로 초기화
-        for(int i=0;i<row;i++) {
-            for(int j=0;j<col;j++) {
+        for(int i=0;i<n;i++) {
+            for(int j=0;j<n;j++) {
             arr[i][j] = ' ';
             }
         }
         
-        star(n,0,col/2);
+        star(n,0,0);
         
-        for(int i=0;i<row;i++) {
-            for(int j=0;j<col;j++) {
+        for(int i=0;i<n;i++) {
+            for(int j=0;j<n;j++) {
                 bw.write(arr[i][j]);
             }
-            bw.newLine();
+            bw.write("\n");
         }
         bw.flush();
     }
@@ -31,20 +30,27 @@ public class Baekjoon2448 {
     public static void star(int n, int row, int col) {
         if(n == 3) {
             arr[row][col] = '*';
+            arr[row][col+1] = '*';
+            arr[row][col+2] = '*';
 
-            arr[row+1][col-1] = '*';
-            arr[row+1][col+1] = '*';
+            arr[row+1][col] = '*';
+            arr[row+1][col+2] = '*';
 
-            arr[row+2][col-2] = '*';
-            arr[row+2][col-1] = '*';
             arr[row+2][col] = '*';
             arr[row+2][col+1] = '*';
             arr[row+2][col+2] = '*';
         }
         else {
-            star(n/2,row,col);
-            star(n/2,row+(n/2),col-(n/2));
-            star(n/2,row+(n/2),col+(n/2));
+            star(n/3,row,col);
+            star(n/3,row,col+(n/3));
+            star(n/3,row,col+2*(n/3));
+
+            star(n/3,row+(n/3),col);
+            star(n/3,row+(n/3),col+2*(n/3));
+            
+            star(n/3,row+2*(n/3),col);
+            star(n/3,row+2*(n/3),col+(n/3));
+            star(n/3,row+2*(n/3),col+2*(n/3));
         }
     }
 }
