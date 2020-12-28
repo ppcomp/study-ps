@@ -15,9 +15,9 @@ class Solution {
     public boolean solution(int[][] key, int[][] lock) {
         boolean answer = false;
         int[][] map = new int[lock.length * 3][lock.length * 3];
-        for(int i = 0; i < map.length-key.length; i++)
+        for(int i = 0; i <= map.length-key.length; i++)
         {
-            for(int j = 0; j < map.length-key.length; j++)
+            for(int j = 0; j <= map.length-key.length; j++)
             {
                 answer = put(i, j, map, key, lock);
                 if(answer == true)
@@ -54,11 +54,17 @@ class Solution {
             for(int i = 0; i < rotate.length; i++)
             {
                 for(int j = 0; j < rotate.length; j++)
-                    if(map[row+i][col+j] == 0)
-                        map[row+i][col+j] = rotate[i][j];
+                {
+                    if(rotate[i][j] == 1)
+                    {
+                        if(map[row+i][col+j] == 0)
+                            map[row+i][col+j] = 1;
+                        else
+                            map[row+i][col+j] = 0;
+                    }
+                }
             }
-            bol = check(map, map.length/3);
-
+            bol = check(map, lock.length);
             if(bol == true)
                 break;
             clear(map);      
@@ -109,4 +115,5 @@ class Solution {
 ```
 
 ## 3. 결과
-![캡처_2020_12_28_17_55_27_963](https://user-images.githubusercontent.com/32921283/103202581-26073400-4936-11eb-9cb8-734e6171aa21.png)
+![캡처_2020_12_28_19_32_06_854](https://user-images.githubusercontent.com/32921283/103208207-6b7e2e00-4943-11eb-8120-d0c9a82ac6f8.png)
+
