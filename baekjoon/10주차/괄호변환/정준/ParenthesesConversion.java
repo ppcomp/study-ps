@@ -18,45 +18,45 @@ public class ParenthesesConversion {
     public String solution(String p) {
         if(p.length() == 0)
             return "";
-        else {
-            String answer = "";
-            Queue<Character> s = new LinkedList<Character>();
-            int open = 0, close = 0;
-            StringBuilder sb = new StringBuilder();
-            String u = "", v = "";
-            for(int i=0;i<p.length();i++) {
-                s.offer(p.charAt(i));
-                if(p.charAt(i) == '(')
-                    open++;
-                else 
-                    close++;
+        
+        String answer = "";
+        Queue<Character> s = new LinkedList<Character>();
+        int open = 0, close = 0;    //괄호 갯수 카운트
+        StringBuilder sb = new StringBuilder();
+        String u = "", v = "";
+        for(int i=0;i<p.length();i++) {
+            s.offer(p.charAt(i));
+            if(p.charAt(i) == '(')
+                open++;
+            else 
+                close++;
 
-                if(open != 0 && close != 0 && open == close) {  //더이상 분리할 수 없는 균형잡힌 문자열
-                    while(!s.isEmpty()) 
-                        sb.append(s.poll());
-                    
-                    u = sb.toString();  //지금까지 나왔던 문자열은 u에 저장, 이후의 문자열은 v
+            if(open != 0 && close != 0 && open == close) {  //더이상 분리할 수 없는 균형잡힌 문자열
+                while(!s.isEmpty()) 
+                    sb.append(s.poll());
+                
+                u = sb.toString();  //지금까지 나왔던 문자열은 u에 저장, 이후의 문자열은 v
 
-                    if(open+close >= p.length())    //v가 빈 문자열인 경우
-                        v = "";
-                    else
-                        v = p.substring(open+close);    //u 다음 문자열부터는 v
+                if(open+close >= p.length())    //v가 빈 문자열인 경우
+                    v = "";
+                else
+                    v = p.substring(open+close);    //u 다음 문자열부터는 v
 
-                    break;
-                }
-            }
-
-            if(isCorrect(u)) {  //u가 올바른 괄호이면 v를 위의 알고리즘 다시 수행하고 u에 이어붙임
-                u += solution(v);
-                return u;
-            }
-            else {  //u가 올바른 괄호가 아니면
-                answer += "(" + solution(v) + ")";  //v를 재귀적으로 수행한 결과에 괄호를 붙임
-                answer += convertPrnth(u);  //u의 첫번째, 마지막 문자 제거하고 나머지 문자열 괄호 방향 바꾸고 뒤에 붙임
-
-                return answer;
+                break;
             }
         }
+
+        if(isCorrect(u)) {  //u가 올바른 괄호이면 v를 위의 알고리즘 다시 수행하고 u에 이어붙임
+            u += solution(v);
+            return u;
+        }
+        else {  //u가 올바른 괄호가 아니면
+            answer += "(" + solution(v) + ")";  //v를 재귀적으로 수행한 결과에 괄호를 붙임
+            answer += convertPrnth(u);  //u의 첫번째, 마지막 문자 제거하고 나머지 문자열 괄호 방향 바꾸고 뒤에 붙임
+
+            return answer;
+        }
+        
     }
 
     public boolean isCorrect(String p) {    //올바른 괄호 판단
