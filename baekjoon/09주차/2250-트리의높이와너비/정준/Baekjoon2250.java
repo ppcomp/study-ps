@@ -28,7 +28,7 @@ public class Baekjoon2250 {
         }
 
         StringTokenizer st;
-        for(int i=0;i<n;i++) {
+        for(int i=0;i<n;i++) {  //입력
             st = new StringTokenizer(br.readLine());
 
             int value = Integer.parseInt(st.nextToken());
@@ -49,16 +49,16 @@ public class Baekjoon2250 {
                 root = i+1;
         }
 
-        pos = 1;
+        pos = 1;    //현재 열의 위치
         inOrder(root, 1);
 
-        int width = 0;
-        int widthLevel = 1;
+        int width = 0;      //너비
+        int widthLevel = 1; //너비레벨
         int temp;
         for(int i=0;i<maxLevel;i++) {
-            temp = levelRight[i] - levelLeft[i] + 1;
+            temp = levelRight[i] - levelLeft[i] + 1;    //너비계산
 
-            if(width < temp) {
+            if(width < temp) {  //계산한 값이 너비보다 크면
                 widthLevel = i+1;
                 width = temp;
             }
@@ -66,8 +66,6 @@ public class Baekjoon2250 {
 
         bw.write(widthLevel+" "+width);
         bw.flush();
-
-
 
     }
 
