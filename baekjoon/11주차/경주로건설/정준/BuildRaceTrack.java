@@ -1,17 +1,19 @@
-# 카카오인턴 - 경주로건설
-
----
-
-## 코드
-
----
-
-```java
 import java.io.*;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class BuildRaceTrack {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
+        BuildRaceTrack b = new BuildRaceTrack();
+        int[][] board = new int[3][3];
+        int result = b.solution(board);
+        bw.write(result+"");
+        bw.flush();
+    }
+
     public int n;
     public int[][] track;
     public int[][] dir = {{-1,0},{1,0},{0,-1},{0,1}};
@@ -52,30 +54,3 @@ public class BuildRaceTrack {
         return track[n-1][n-1];  //도착지점 코스트 저장
     }
 }
-```
-
-## 해결 과정
-
----
-
-처음에는 DFS를 사용해 코스트를 계산했는데 배열의 크기가 큰 테스트케이스를 통과하지 못했다. (시간초과)
-
-그래서 BFS로 바꾸었는데 여기서 중요한 점은 코스트계산이다.
-
-코스트를 계산할 때 이전방향이 중요한데 나는 탐색할 때 이전방향도 같이 확인해서 코스트를 계산하였다.
-
-```java
-int nextCost = (prev != -1 && prev != i) ? cost+600 : cost+100; //다음칸 코스트 계산
-```
-
-이전방향과 탐색할 방향이 다르면 600을 더해주고 같으면 100만 더해준다.
-
-BFS로 탐색한 결과는 다음 이미지와 같다.
-
-![image](https://user-images.githubusercontent.com/47655983/103513095-40e52580-4ead-11eb-8f48-e2644b26a5c8.png)
-
-## 결과
-
----
-
-![image](https://user-images.githubusercontent.com/47655983/103512658-79383400-4eac-11eb-932b-25fbc85c7836.png)

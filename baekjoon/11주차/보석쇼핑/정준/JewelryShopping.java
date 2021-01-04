@@ -1,18 +1,21 @@
-# 카카오인턴 - 보석쇼핑
-
----
-
-## 코드
-
----
-
-```java
+import java.io.*;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class JewelryShopping {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String[] test = {"ZZZ", "YYY", "NNNN", "YYY", "BBB"};
+
+        JewelryShopping j = new JewelryShopping();
+        int[] result = j.solution(test);
+        
+        
+    }
+
     public int[] solution(String[] gems) {
         int[] answer = new int[2];
         HashSet<String> set = new HashSet<>();  //보석의 종류를 저장해주는 HashSet
@@ -55,28 +58,3 @@ public class JewelryShopping {
         return answer;
     }
 }
-```
-
-## 해결 과정
-
----
-
-처음에는 해쉬맵과 해쉬셋을 사용해 2중 반복문을 통해 모든 경우의 수를 살폈는데
-
-입력값이 10만이나 되다보니 시간초과가 났다.
-
-그래서 큐를 이용한 슬라이싱을 사용하게 되었고
-
-방법은 다음과 같다
-
-1. 해쉬셋에 모든 종류의 보석을 저장함
-2. 해쉬맵은 키값으로 보석이름을 데이터값으로 숫자를 저장하는데 순회를 돌면서 중복된 보석이 들어오면 숫자를 하나씩 늘림
-3. 순회할때마다 보석을 큐에 삽입하고 큐의 맨 앞( q.peek() )에 있는 보석을 해쉬맵에서 확인해서 카운트가 2이상이면 방출하고 카운트를 줄이는 것을 반복함
-
- 4. 해쉬맵과 해쉬셋의 사이즈가 같고 최소길이보다 큐의 길이가 작으면 보석이 한종류씩 다 있고 최소길이가 갱신된 것이므로 최소길이 갱신하고 시작지점 저장함
-
-## 결과
-
----
-
-![image](https://user-images.githubusercontent.com/47655983/103510736-24df8500-4ea9-11eb-9db8-a7f979a940d5.png)
