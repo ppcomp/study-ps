@@ -7,9 +7,7 @@
 ## 2. 과정
 
 ### (1) 단순 2중for문을 활용
-
 보속의 갯수를 카운팅하고 배열의 처음을 기준으로 모든 보석이 해당하는 범위를 찾음
-
 ```java
 import java.util.ArrayList;
 class Solution {
@@ -64,6 +62,7 @@ class Solution {
     }
 }
 ```
+
 ![캡처_2021_01_11_10_40_04_513](https://user-images.githubusercontent.com/32921283/104141457-43d69d80-53fa-11eb-9062-3d85b33b2791.png)
 ### (2) HashSet에 모든종류의 보석을 집어넣고 Queue와 HashMap에 배열의 보석들을 하나씩 입력한 후 만약 큐의 첫번째 값이 복수개면 삭제하는 반복문을 거쳐서 HashSet과 HashMap의 크기가 같으면 해당하는 길이를 저장하는 방법
 
