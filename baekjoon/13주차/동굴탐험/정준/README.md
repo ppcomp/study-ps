@@ -1,14 +1,16 @@
-import java.io.*;
+# 동굴 탐험
+
+---
+
+## 코드
+
+---
+
+```java
 import java.util.ArrayList;
 import java.util.Stack;
 
 public class CaveExplore {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-    }
-
     public boolean solution(int n, int[][] path, int[][] order) {
         int[] prev = new int[n];    //미리 방문해야 하는 방
         int[] next = new int[n];    //다음에 방문할 방
@@ -29,7 +31,7 @@ public class CaveExplore {
 
         for (int i = 0; i < order.length; i++)  //이전에 방문해야하는 방들 저장
             prev[order[i][1]] = order[i][0];
-        
+
         if(prev[0] != 0)    //0번방 이전에 방문해야 하는 방이 있으면 false
             return false;
         
@@ -64,3 +66,42 @@ public class CaveExplore {
         return true;
     }
 }
+```
+
+## 해결 과정
+
+---
+
+[https://jellyinghead.tistory.com/41](https://jellyinghead.tistory.com/41)
+
+위의 블로그 참고해서 해결함
+
+### 스택을 이용한 풀이
+
+방마다 2개의 값을 저장함 
+
+- 먼저 방문해야 하는 방 (prev)
+- 이 방을 방문하고 갈 수 있는 방 (next)
+
+`prev[a] = b`  : a를 방문하기 이전에 b를 방문해야 함
+
+`next[b] = a`  : b를 방문하고 a를 방문해야 함
+
+알고리즘
+
+- 0번 방을 방문하고 0번 방과 직접 연결된 방들을 스택에 삽입
+- 스택에 아무것도 없을 때까지 반복
+    - 스택을 pop (현재 방)
+    - 현재 방이 방문한 방이면 continue
+    - 현재 방을 방문(visited)하지 않았지만 방문해야 하는 방(prev)에 가본 적이 없으면 next에 넣고 continue
+    - 현재 방 방문(visited)
+    - 스택에 현재 방에서 직접 연결된 방들 모두 삽입
+    - 스택에 현재 방 방문 이후에 갈 수 있는 방(next[now]) 삽입
+- 만약 한번도 방문하지 않은 방이 있으면 false 반환
+- 모두 방문했으면 true 반환
+
+## 결과
+
+---
+
+![image](https://user-images.githubusercontent.com/47655983/104799427-614ca280-5812-11eb-92e9-2c10a988a52c.png)
